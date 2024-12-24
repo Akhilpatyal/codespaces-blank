@@ -2,43 +2,23 @@
     import FeedbackList from "./components/feedbackList.svelte";
 import Status from "./components/feedbackStatus.svelte";
 import Form from "./components/feedbackForm.svelte";
-	let feedback = [
-		{
-			id: 1,
-			rating: 5,
-			text: "Lorem ipsum dolor sit amet, consectetur adipisicingelit. Aspernatur voluptas magnam voluptates eius quaerat quasi sit nemo atminima a! Voluptates, dolore optio velit eveniet ipsam exercitationem illumfuga illo cumque alias maxime vel!",
-		},
-		{
-			id: 2,
-			rating: 8,
-			text: "Lorem ipsum dolor sit amet, consectetur adipisicingelit. Aspernatur voluptas magnam voluptates eius quaerat quasi sit nemo atminima a! Voluptates, dolore optio velit eveniet ipsam exercitationem illumfuga illo cumque alias maxime vel!",
-		},
-		{
-			id: 3,
-			rating: 6,
-			text: "Lorem ipsum dolor sit amet, consectetur adipisicingelit. Aspernatur voluptas magnam voluptates eius quaerat quasi sit nemo atminima a! Voluptates, dolore optio velit eveniet ipsam exercitationem illumfuga illo cumque alias maxime vel!",
-		},
-		{
-			id: 4,
-			rating: 5,
-			text: "Lorem ipsum dolor sit amet, consectetur adipisicingelit. Aspernatur voluptas magnam voluptates eius quaerat quasi sit nemo atminima a! Voluptates, dolore optio velit eveniet ipsam exercitationem illumfuga illo cumque alias maxime vel!",
-		},
-	];
-	const deleteFeedback=(e)=>{
-		const itemId=e.detail;
-		if(itemId){
-			count--;
-			feedback=feedback.filter((item)=>item.id!=itemId);
-		}
+
+
+	const addfeedback=(e)=>{
+		const newFeedback=e.detail
+		// console.log(e.detail);
+		// users=[...users,{id:"5",name:"pintu lal"}]
+		feedback=[newFeedback,...feedback]
 	}
-	$:count=feedback.length;
-	$:average=feedback.reduce((a,{rating})=>a+rating,0)/feedback.length;
+
+	
+	
 </script>
 
 <main class="container">
-	<Form/>
-	<Status {count} {average}/>
-	<FeedbackList {feedback} on:delete-Feedback={deleteFeedback}/>
+	<Form />
+	<Status/>
+	<FeedbackList/>
 </main>
 
 <style>
